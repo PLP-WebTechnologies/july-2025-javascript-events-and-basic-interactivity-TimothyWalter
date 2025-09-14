@@ -61,3 +61,26 @@ document.getElementById("signupForm").addEventListener("submit", (e) => {
     document.getElementById("signupForm").reset();
   }
 });
+// 📂 Dropdown Menu
+const dropdownBtn = document.getElementById("dropdownBtn");
+const dropdownMenu = document.getElementById("dropdownMenu");
+
+// Toggle dropdown on button click
+dropdownBtn.addEventListener("click", () => {
+  dropdownMenu.classList.toggle("show");
+});
+
+// Close dropdown if clicking outside
+window.addEventListener("click", (e) => {
+  if (!dropdownBtn.contains(e.target) && !dropdownMenu.contains(e.target)) {
+    dropdownMenu.classList.remove("show");
+  }
+});
+
+// Example: Handle clicks on menu items
+dropdownMenu.querySelectorAll("li").forEach(item => {
+  item.addEventListener("click", () => {
+    alert(`You clicked: ${item.textContent}`);
+    dropdownMenu.classList.remove("show");
+  });
+});
